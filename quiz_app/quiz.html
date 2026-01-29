@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Master</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="startScreen">
+  <h1>Quiz Master</h1>
+
+  <h3>Select Category</h3>
+  <div class="categories">
+    <div class="category-card" data-category="HTML">HTML</div>
+    <div class="category-card" data-category="CSS">CSS</div>
+    <div class="category-card" data-category="JavaScript">JavaScript</div>
+    <div class="category-card" data-category="Python">Python</div>
+  </div>
+
+  <h3>Select Difficulty</h3>
+  <div class="difficulty">
+    <button class="difficulty-btn" data-level="Easy">Easy</button>
+    <button class="difficulty-btn" data-level="Medium">Medium</button>
+    <button class="difficulty-btn" data-level="Hard">Hard</button>
+  </div>
+
+  <button onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<!-- QUIZ SCREEN -->
+<div id="quizScreen" style="display:none;">
+  <div id="questionCount"></div>
+  <div id="timer"></div>
+
+  <div class="progress-bar">
+    <div id="progress"></div>
+  </div>
+
+  <h2 id="questionText"></h2>
+  <div id="options"></div>
+
+  <button id="submitBtn" onclick="submitAnswer()" disabled>
+    Submit Answer
+  </button>
+</div>
+
+<script src="quiz.data.js"></script>
+<script src="quiz-logic.js"></script>
+</body>
+</html>

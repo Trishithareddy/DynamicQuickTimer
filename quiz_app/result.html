@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="resultScreen">
+  <h1>Quiz Complete!</h1>
+
+  <div class="summary">
+    <div><span id="scorePercent"></span> Score</div>
+    <div><span id="correct"></span> Correct</div>
+    <div><span id="incorrect"></span> Incorrect</div>
+    <div><span id="avgTime"></span> Avg Time</div>
+  </div>
+
+  <h2>Detailed Results</h2>
+  <div id="details"></div>
+
+  <button onclick="restart()">Take Another Quiz</button>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("quizResult"));
+
+const percent = Math.round((data.score / data.total) * 100);
+document.getElementById("scorePercent").innerText = percent + "%";
+document.getElementById("correct").innerText = data.score;
+document.getElementById("incorrect").innerText = data.total - data.score;
+
+const avg =
+  Math.round(data.timeTaken.reduce((a,b)=>a+b,0) / data.timeTaken.length);
+document.getElementById("avgTime").innerText = avg + "s";
+
+const details = document.getElementById("details");
+
+data.answers.forEach((a,i) => {
+  const div = document.createElement("div");
+  div.className = a.selected === a.correct ? "correct" : "incorrect";
+  div.innerHTML = `
+    <strong>Question ${i+1}</strong>
+    <p>${a.question}</p>
+    <span>${a.selected === a.correct ? "✔ Correct" : "✖ Incorrect"}</span>
+    <span>${a.time}s</span>
+  `;
+  details.appendChild(div);
+});
+
+function restart() {
+  localStorage.clear();
+  window.location.href = "quiz.html";
+}
+</script>
+
+</body>
+</html>

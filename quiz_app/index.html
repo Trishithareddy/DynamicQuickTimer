@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QuickIQ</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HOME -->
+  <div id="home">
+    <h1>QuickIQ</h1>
+    <p class="subtitle">Measure your skills. Improve with every quiz.</p>
+
+    <div class="section-title">Select Category</div>
+    <div class="button-group">
+      <div class="option-btn" data-cat="HTML">HTML</div>
+      <div class="option-btn" data-cat="CSS">CSS</div>
+      <div class="option-btn" data-cat="JavaScript">JavaScript</div>
+      <div class="option-btn" data-cat="Python">Python</div>
+      <div class="option-btn" data-cat="Java">Java</div>
+    </div>
+
+    <div class="section-title">Select Difficulty</div>
+    <div class="button-group">
+      <div class="option-btn" data-lvl="Easy">Easy</div>
+      <div class="option-btn" data-lvl="Medium">Medium</div>
+      <div class="option-btn" data-lvl="Hard">Hard</div>
+    </div>
+
+    <button class="start-btn" id="start">🚀 Start Quiz</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" style="display:none;">
+    <div class="timer" id="timer">⏱ 30s</div>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <button class="start-btn" id="submit">Submit Answer</button>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" style="display:none;">
+    <h1>Quiz Complete!</h1>
+
+    <div class="result-box">
+      <div class="result-card score"><div id="scoreP"></div><small>Score</small></div>
+      <div class="result-card correct"><div id="correctC"></div><small>Correct</small></div>
+      <div class="result-card incorrect"><div id="wrongC"></div><small>Wrong</small></div>
+      <div class="result-card time"><div id="avgT"></div><small>Avg Time</small></div>
+    </div>
+
+    <div class="charts-wrapper">
+      <div class="chart-box">
+        <h3>Correct vs Wrong</h3>
+        <canvas id="pie"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Time per Question</h3>
+        <canvas id="bar"></canvas>
+      </div>
+    </div>
+    <div id="detailedResults" class="detail-box">
+  <h3>📋 Detailed Results</h3>
+</div>
+
+
+    <button class="start-btn" onclick="location.reload()">🔁 Take Another Quiz</button>
+  </div>
+
+</div>
+
+<!-- ORDER IS IMPORTANT -->
+<script src="quiz-data.js"></script>
+<script src="quiz-logic.js"></script>
+
+</body>
+</html>
